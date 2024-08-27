@@ -21,7 +21,7 @@ const (
 	urlHostDnsBreakdown          = "/lua/host_dns_breakdown.lua"                       // 主机统计数据-DNS查询发送、接收分布
 	urlHostHttpBreakdown         = "/lua/host_http_breakdown.lua"                      // 主机统计数据-HTTP发送查询、接收响应分布
 	urlHostFingerprintData       = "/lua/rest/v2/get/host/fingerprint/data.lua"        // TLS JA3客户端指纹
-	urlMacsData                  = "/lua/get_macs_data.lua"                            // M按AC地址划分主机
+	urlMacsData                  = "/lua/get_macs_data.lua"                            // 按MAC地址划分主机
 	urlNetworksData              = "/lua/get_networks_data.lua"                        // 按网络划分主机
 	urlHostPoolsData             = "/lua/get_pools_data.lua"                           // 按主机池划分主机
 	urlASesData                  = "/lua/get_ases_data.lua"                            // 按自治系统划分主机
