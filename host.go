@@ -139,31 +139,31 @@ func (this *Ntopng) GetHostList(req *HostReq) (*HostResp, error) {
 }
 
 type HostStats struct {
-	Systemhost                   bool          `json:"systemhost"`
-	ThroughputTrendBps           int64         `json:"throughput_trend_bps"`
-	Asn                          int64         `json:"asn"`
-	UdpBytesSent                 int64         `json:"udp.bytes.sent"`
-	Os                           int64         `json:"os"`
-	UdpBytesRcvd                 int64         `json:"udp.bytes.rcvd"`
-	ContactsAsClient             int64         `json:"contacts.as_client"`
-	Name                         string        `json:"name"`
-	HostUnreachableFlowsAsServer int64         `json:"host_unreachable_flows.as_server"`
-	AlertedFlowsAsServer         int64         `json:"alerted_flows.as_server"`
-	IcmpBytesRcvdAnomalyIndex    int64         `json:"icmp.bytes.rcvd.anomaly_index"`
-	ThroughputBps                float64       `json:"throughput_bps"`
-	HasshFingerprint             []interface{} `json:"hassh_fingerprint"`
-	Ifid                         int           `json:"ifid"`
-	Ja3Fingerprint               []interface{} `json:"ja3_fingerprint"`
-	FlowsAsServer                int64         `json:"flows.as_server"`
-	ActiveFlowsAsServer          int64         `json:"active_flows.as_server"`
-	OtherIpPacketsRcvd           int64         `json:"other_ip.packets.rcvd"`
-	Localhost                    bool          `json:"localhost"`
-	Duration                     int64         `json:"duration"`
-	City                         string        `json:"city"`
-	Ipkey                        int64         `json:"ipkey"`
-	SeenLast                     int64         `json:"seen.last"`
-	BytesSent                    int64         `json:"bytes.sent"`
-	SeenFirst                    int64         `json:"seen.first"`
+	Systemhost                   bool        `json:"systemhost"`
+	ThroughputTrendBps           int64       `json:"throughput_trend_bps"`
+	Asn                          int64       `json:"asn"`
+	UdpBytesSent                 int64       `json:"udp.bytes.sent"`
+	Os                           int64       `json:"os"`
+	UdpBytesRcvd                 int64       `json:"udp.bytes.rcvd"`
+	ContactsAsClient             int64       `json:"contacts.as_client"`
+	Name                         string      `json:"name"`
+	HostUnreachableFlowsAsServer int64       `json:"host_unreachable_flows.as_server"`
+	AlertedFlowsAsServer         int64       `json:"alerted_flows.as_server"`
+	IcmpBytesRcvdAnomalyIndex    int64       `json:"icmp.bytes.rcvd.anomaly_index"`
+	ThroughputBps                float64     `json:"throughput_bps"`
+	HasshFingerprint             interface{} `json:"hassh_fingerprint"`
+	Ifid                         int         `json:"ifid"`
+	Ja3Fingerprint               interface{} `json:"ja3_fingerprint"`
+	FlowsAsServer                int64       `json:"flows.as_server"`
+	ActiveFlowsAsServer          int64       `json:"active_flows.as_server"`
+	OtherIpPacketsRcvd           int64       `json:"other_ip.packets.rcvd"`
+	Localhost                    bool        `json:"localhost"`
+	Duration                     int64       `json:"duration"`
+	City                         string      `json:"city"`
+	Ipkey                        int64       `json:"ipkey"`
+	SeenLast                     int64       `json:"seen.last"`
+	BytesSent                    int64       `json:"bytes.sent"`
+	SeenFirst                    int64       `json:"seen.first"`
 	TcpPacketStatsSent           struct {
 		Lost            int64 `json:"lost"`
 		KeepAlive       int64 `json:"keep_alive"`
@@ -179,10 +179,10 @@ type HostStats struct {
 		BytesRcvd int64 `json:"bytes.rcvd"`
 		BytesSent int64 `json:"bytes.sent"`
 	} `json:"ndpi_categories"`
-	Names                        []interface{} `json:"names"`
-	HostUnreachableFlowsAsClient int64         `json:"host_unreachable_flows.as_client"`
-	ThroughputPps                float64       `json:"throughput_pps"`
-	ScoreAsClient                int64         `json:"score.as_client"`
+	Names                        interface{} `json:"names"`
+	HostUnreachableFlowsAsClient int64       `json:"host_unreachable_flows.as_client"`
+	ThroughputPps                float64     `json:"throughput_pps"`
+	ScoreAsClient                int64       `json:"score.as_client"`
 	TcpPacketStatsRcvd           struct {
 		Lost            int64 `json:"lost"`
 		KeepAlive       int64 `json:"keep_alive"`
