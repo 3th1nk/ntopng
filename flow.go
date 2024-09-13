@@ -84,9 +84,13 @@ func (f Flow) parseAddr(htmlStr string) string {
 
 	hostNode := htmlquery.FindOne(doc, "//a[contains(@href, 'host_details.lua')]")
 	portNode := htmlquery.FindOne(doc, "//a[contains(@href, 'flows_stats.lua')]")
-	portProtoStr := htmlquery.InnerText(portNode)
 
-	portHref := htmlquery.SelectAttr(portNode, "href")
+	var portProtoStr, portHref string
+	if portNode != nil {
+		portProtoStr = htmlquery.InnerText(portNode)
+		portHref = htmlquery.SelectAttr(portNode, "href")
+	}
+
 	re := regexp.MustCompile(`port=(\d+)`)
 	if match := re.FindStringSubmatch(portHref); len(match) > 1 && match[1] != portProtoStr {
 		return htmlquery.InnerText(hostNode) + ":" + match[1] + "|" + portProtoStr

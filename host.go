@@ -520,7 +520,10 @@ type HostL7Data struct {
 }
 
 func (this *Ntopng) GetHostL7Data(host string) ([]*HostL7Data, error) {
-	bs, err := this.Get(urlHostL7Data, nil, map[string]interface{}{"host": host})
+	bs, err := this.Get(urlHostL7Data, nil, map[string]interface{}{
+		"host": host,
+		"view": "applications",
+	})
 	if err != nil {
 		return nil, err
 	}
