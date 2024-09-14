@@ -310,7 +310,7 @@ type HostStats struct {
 	HTTP struct {
 		Receiver     HttpBreakdown `json:"receiver"`
 		Sender       HttpBreakdown `json:"sender"`
-		VirtualHosts []interface{} `json:"virtual_hosts"`
+		VirtualHosts interface{}   `json:"virtual_hosts"`
 	} `json:"http,omitempty"`
 }
 
@@ -379,6 +379,11 @@ func (this *Ntopng) GetHostStats(host string) (*HostStats, error) {
 	bs, err := this.Get(urlHostStats, nil, map[string]interface{}{"host": host})
 	if err != nil {
 		return nil, err
+	}
+
+	// 接口可能返回空值`"{}"`，特殊处理一下
+	if bs == nil || len(bs) == 0 || string(bs) == `"{}"` {
+		return &HostStats{}, nil
 	}
 
 	var resp HostStats

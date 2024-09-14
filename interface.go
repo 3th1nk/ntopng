@@ -31,42 +31,42 @@ type Interface struct {
 		Download []int64 `json:"download"`
 		Upload   []int64 `json:"upload"`
 	} `json:"download_upload_chart,omitempty"`
-	DroppedAlerts                    int64         `json:"dropped_alerts,omitempty"`
-	Drops                            int64         `json:"drops,omitempty"`
-	EngagedAlerts                    int64         `json:"engaged_alerts,omitempty"`
-	EngagedAlertsError               int64         `json:"engaged_alerts_error,omitempty"`
-	EngagedAlertsNotice              int64         `json:"engaged_alerts_notice,omitempty"`
-	EngagedAlertsWarning             int64         `json:"engaged_alerts_warning,omitempty"`
-	Epoch                            int64         `json:"epoch,omitempty"`
-	FlowDroppedAlerts                int64         `json:"flow_dropped_alerts,omitempty"`
-	FlowsPctg                        int64         `json:"flows_pctg,omitempty"`
-	HostDroppedAlerts                int64         `json:"host_dropped_alerts,omitempty"`
-	HostsPctg                        int64         `json:"hosts_pctg,omitempty"`
-	Ifid                             int64         `json:"ifid"`
-	Ifname                           string        `json:"ifname"`
-	IsView                           bool          `json:"is_view,omitempty"`
-	Local2Remote                     int64         `json:"local2remote,omitempty"`
-	Localtime                        string        `json:"localtime,omitempty"`
-	MacsPctg                         int64         `json:"macs_pctg,omitempty"`
-	NumDevices                       int64         `json:"num_devices,omitempty"`
-	NumFlows                         int64         `json:"num_flows,omitempty"`
-	NumHosts                         int64         `json:"num_hosts,omitempty"`
-	NumLiveCaptures                  int64         `json:"num_live_captures,omitempty"`
-	NumLocalHosts                    int64         `json:"num_local_hosts,omitempty"`
-	NumLocalHostsAnomalies           int64         `json:"num_local_hosts_anomalies,omitempty"`
-	NumLocalRcvdOnlyHosts            int64         `json:"num_local_rcvd_only_hosts,omitempty"`
-	NumRcvdOnlyHosts                 int64         `json:"num_rcvd_only_hosts,omitempty"`
-	NumRemoteHostsAnomalies          int64         `json:"num_remote_hosts_anomalies,omitempty"`
-	OtherDroppedAlerts               int64         `json:"other_dropped_alerts,omitempty"`
-	Packets                          int64         `json:"packets,omitempty"`
-	PacketsDownload                  int64         `json:"packets_download,omitempty"`
-	PacketsUpload                    int64         `json:"packets_upload,omitempty"`
-	PeriodicStatsUpdateFrequencySecs int64         `json:"periodic_stats_update_frequency_secs,omitempty"`
-	Profiles                         []interface{} `json:"profiles,omitempty"`
-	Remote2Local                     int64         `json:"remote2local,omitempty"`
-	RemoteBps                        float64       `json:"remote_bps,omitempty"`
-	RemotePps                        float64       `json:"remote_pps,omitempty"`
-	Speed                            int64         `json:"speed,omitempty"` // Mbps
+	DroppedAlerts                    int64       `json:"dropped_alerts,omitempty"`
+	Drops                            int64       `json:"drops,omitempty"`
+	EngagedAlerts                    int64       `json:"engaged_alerts,omitempty"`
+	EngagedAlertsError               int64       `json:"engaged_alerts_error,omitempty"`
+	EngagedAlertsNotice              int64       `json:"engaged_alerts_notice,omitempty"`
+	EngagedAlertsWarning             int64       `json:"engaged_alerts_warning,omitempty"`
+	Epoch                            int64       `json:"epoch,omitempty"`
+	FlowDroppedAlerts                int64       `json:"flow_dropped_alerts,omitempty"`
+	FlowsPctg                        int64       `json:"flows_pctg,omitempty"`
+	HostDroppedAlerts                int64       `json:"host_dropped_alerts,omitempty"`
+	HostsPctg                        int64       `json:"hosts_pctg,omitempty"`
+	Ifid                             int64       `json:"ifid"`
+	Ifname                           string      `json:"ifname"`
+	IsView                           bool        `json:"is_view,omitempty"`
+	Local2Remote                     int64       `json:"local2remote,omitempty"`
+	Localtime                        string      `json:"localtime,omitempty"`
+	MacsPctg                         int64       `json:"macs_pctg,omitempty"`
+	NumDevices                       int64       `json:"num_devices,omitempty"`
+	NumFlows                         int64       `json:"num_flows,omitempty"`
+	NumHosts                         int64       `json:"num_hosts,omitempty"`
+	NumLiveCaptures                  int64       `json:"num_live_captures,omitempty"`
+	NumLocalHosts                    int64       `json:"num_local_hosts,omitempty"`
+	NumLocalHostsAnomalies           int64       `json:"num_local_hosts_anomalies,omitempty"`
+	NumLocalRcvdOnlyHosts            int64       `json:"num_local_rcvd_only_hosts,omitempty"`
+	NumRcvdOnlyHosts                 int64       `json:"num_rcvd_only_hosts,omitempty"`
+	NumRemoteHostsAnomalies          int64       `json:"num_remote_hosts_anomalies,omitempty"`
+	OtherDroppedAlerts               int64       `json:"other_dropped_alerts,omitempty"`
+	Packets                          int64       `json:"packets,omitempty"`
+	PacketsDownload                  int64       `json:"packets_download,omitempty"`
+	PacketsUpload                    int64       `json:"packets_upload,omitempty"`
+	PeriodicStatsUpdateFrequencySecs int64       `json:"periodic_stats_update_frequency_secs,omitempty"`
+	Profiles                         interface{} `json:"profiles,omitempty"`
+	Remote2Local                     int64       `json:"remote2local,omitempty"`
+	RemoteBps                        float64     `json:"remote_bps,omitempty"`
+	RemotePps                        float64     `json:"remote_pps,omitempty"`
+	Speed                            int64       `json:"speed,omitempty"` // Mbps
 	SystemHostStats                  struct {
 		AlertsQueries int64 `json:"alerts_queries,omitempty"`
 		AlertsStats   struct {
