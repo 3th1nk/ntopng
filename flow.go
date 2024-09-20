@@ -8,8 +8,9 @@ import (
 )
 
 const (
-	urlFlowsData = "/lua/get_flows_data.lua"
-	urlFlowStats = "/lua/flow_stats.lua"
+	urlFlowsData  = "/lua/get_flows_data.lua"
+	urlFlowStats  = "/lua/flow_stats.lua"
+	urlFlowActive = "/lua/rest/v2/get/flow/active.lua"
 )
 
 type FlowReq struct {
@@ -238,5 +239,112 @@ func (this *Ntopng) GetFlowStats(req *FlowStatsReq) (*FlowStatsResp, error) {
 	if err = UnmarshalRaw(bs, &resp); err != nil {
 		return nil, err
 	}
+	return &resp, nil
+}
+
+type ActiveFlowResp struct {
+	BasePageResp
+	Data []*ActiveFlow `json:"data"`
+}
+
+type ActiveFlow struct {
+	Key       string  `json:"key"`
+	HashId    string  `json:"hash_id"`
+	FirstSeen int64   `json:"first_seen"`
+	LastSeen  int64   `json:"last_seen"`
+	Bytes     float64 `json:"bytes"`
+	Duration  int64   `json:"duration"`
+	Vlan      int     `json:"vlan"`
+
+	Client struct {
+		Ip                string `json:"ip,omitempty"`
+		IsBlacklisted     bool   `json:"is_blacklisted,omitempty"`
+		IsBroadcastDomain bool   `json:"is_broadcast_domain,omitempty"`
+		Port              int    `json:"port,omitempty"`
+		IsDhcp            bool   `json:"is_dhcp,omitempty"`
+		Name              string `json:"name,omitempty"`
+	} `json:"client,omitempty"`
+
+	Server struct {
+		Ip            string `json:"ip"`
+		IsBlacklisted bool   `json:"is_blacklisted"`
+		IsDhcp        bool   `json:"is_dhcp"`
+		Port          int    `json:"port"`
+		Name          string `json:"name"`
+		IsBroadcast   bool   `json:"is_broadcast"`
+	}
+
+	Breakdown struct {
+		Srv2Cli float64 `json:"srv2cli"`
+		Cli2Srv float64 `json:"cli2srv"`
+	} `json:"breakdown"`
+
+	Thpt struct {
+		Pps float64 `json:"pps"`
+		Bps float64 `json:"bps"`
+	} `json:"thpt"`
+
+	Protocol struct {
+		L4 string `json:"l4"`
+		L7 string `json:"l7"`
+	} `json:"protocol"`
+}
+
+func (this *Ntopng) GetActiveFlows(req *FlowReq) (*ActiveFlowResp, error) {
+	req.defaultIfEmpty()
+	query := map[string]interface{}{
+		"ifid":        req.IfId,
+		"currentPage": req.CurrentPage,
+		"perPage":     req.PerPage,
+		"sortColumn":  req.SortColumn,
+		"sortOrder":   req.SortOrder,
+	}
+	if req.FlowHostsType != FlowHostTypeAll {
+		query["flowhosts_type"] = req.FlowHostsType
+	}
+	if req.AlertType != AlertTypeAll {
+		query["alert_type"] = req.AlertType
+	}
+	if req.AlertTypeSeverity != AlertTypeSeverityAll {
+		query["alert_type_severity"] = req.AlertTypeSeverity
+	}
+	if req.TrafficType != TrafficTypeAll {
+		query["traffic_type"] = req.TrafficType
+	}
+	if req.Host != "" {
+		query["host"] = req.Host
+	}
+	if req.Application != "" {
+		query["application"] = req.Application
+	}
+	if req.Category != "" {
+		query["category"] = req.Category
+	}
+	if req.DSCP != nil {
+		query["dscp"] = *req.DSCP
+	}
+	if req.HostPoolId != nil {
+		query["host_pool_id"] = *req.HostPoolId
+	}
+	if req.Network != nil {
+		query["network"] = *req.Network
+	}
+	if req.Version != IPVersionAll {
+		query["version"] = req.Version
+	}
+	if req.L4Proto != L4ProtoAll {
+		query["l4proto"] = req.L4Proto
+	}
+
+	bs, err := this.Get(urlFlowActive, nil, query)
+	if err != nil {
+		return nil, err
+	}
+
+	var resp ActiveFlowResp
+	if err = UnmarshalRsp(bs, &resp); err != nil {
+		return nil, err
+	}
+
 	return &resp, nil
 }

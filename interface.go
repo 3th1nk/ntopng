@@ -246,25 +246,30 @@ func (this *Ntopng) GetInterfaceDistro(req *IfDistroReq) ([]*LabelValue, error) 
 
 	case IfDistroTypeDSCP:
 		path = urlInterfaceDSCPStats
+		isUnmarshalRsp = true
 
 	case IfDistroTypeL7SinceStartup:
 		path = urlInterfaceL7Stats
 		query["ndpistats_mode"] = "sinceStartup"
+		isUnmarshalRsp = true
 
 	case IfDistroTypeL7BreedSinceStartup:
 		path = urlInterfaceL7Stats
 		query["ndpistats_mode"] = "sinceStartup"
 		query["breed"] = true
+		isUnmarshalRsp = true
 
 	case IfDistroTypeL7BreedCount:
 		path = urlInterfaceL7Stats
 		query["ndpistats_mode"] = "count"
 		query["breed"] = true
+		isUnmarshalRsp = true
 
 	case IfDistroTypeL7Category:
 		path = urlInterfaceL7Stats
 		query["ndpistats_mode"] = "sinceStartup"
 		query["ndpi_category"] = true
+		isUnmarshalRsp = true
 
 	case IfDistroTypeTcpStats:
 		path = urlInterfaceTcpStats

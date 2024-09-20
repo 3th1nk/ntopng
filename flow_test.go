@@ -34,3 +34,22 @@ func TestNtopng_GetFlowStats(t *testing.T) {
 	}
 	t.Log(jsonUtil.MustMarshalToStringIndent(resp))
 }
+
+func TestNtopng_GetActiveFlows(t *testing.T) {
+	resp, err := n.GetActiveFlows(&FlowReq{
+		BasePageReq: BasePageReq{
+			CurrentPage: 1,
+			PerPage:     10,
+			SortColumn:  "thpt",
+			SortOrder:   "desc",
+		},
+		IfId: 0,
+	})
+	if err != nil {
+		t.Fatal(err)
+		return
+	}
+	for _, a := range resp.Data {
+		t.Log(jsonUtil.MustMarshalToString(a))
+	}
+}
